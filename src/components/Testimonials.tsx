@@ -2,6 +2,7 @@
 import React from 'react';
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
+import { Quote } from "lucide-react";
 
 const testimonials = [
   {
@@ -24,34 +25,34 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="section-padding bg-white dark:bg-gray-950">
       <div className="container-custom">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            What Our Customers Say
+            What Our <span className="text-gradient">Customers Say</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Trusted by businesses of all sizes to maximize the value of their software assets
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="overflow-hidden">
-              <CardContent className="p-6">
-                <div className="flex flex-col gap-4">
-                  <div className="relative">
-                    <span className="absolute -top-2 -left-2 text-6xl text-primary opacity-20">"</span>
-                    <p className="relative text-lg">{testimonial.quote}</p>
+            <Card key={index} className="overflow-hidden border-none shadow-soft hover:shadow-md transition-all duration-300">
+              <CardContent className="p-8">
+                <div className="flex flex-col gap-6">
+                  <div className="relative mb-2">
+                    <Quote className="h-8 w-8 text-primary/20 absolute -top-1 -left-2" />
+                    <p className="relative text-lg pl-6 italic">{testimonial.quote}</p>
                   </div>
                   
                   <div className="flex items-center gap-4 mt-4">
-                    <Avatar className="h-12 w-12 border-2 border-primary">
-                      <AvatarFallback className="bg-primary/10 text-primary">
+                    <Avatar className="h-14 w-14 ring-4 ring-primary/10">
+                      <AvatarFallback className="bg-primary/10 text-primary font-semibold">
                         {testimonial.initials}
                       </AvatarFallback>
                     </Avatar>
                     
                     <div>
-                      <h4 className="font-semibold">{testimonial.name}</h4>
+                      <h4 className="font-semibold text-lg">{testimonial.name}</h4>
                       <p className="text-sm text-muted-foreground">
                         {testimonial.role}, {testimonial.company}
                       </p>

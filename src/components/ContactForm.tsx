@@ -22,6 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -74,18 +75,22 @@ const ContactForm = () => {
   }
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-background">
-      <div className="container-custom">
-        <div className="text-center mb-12">
+    <section id="contact" className="section-padding bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-background relative">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute left-0 bottom-0 h-96 w-96 translate-y-1/2 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl"></div>
+      </div>
+      
+      <div className="container-custom relative z-10">
+        <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Get Your Free Quote
+            Get Your <span className="text-gradient">Free Quote</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Tell us about your software licenses and we'll get back to you with a valuation
           </p>
         </div>
         
-        <div className="mx-auto max-w-2xl rounded-xl border bg-card p-6 shadow-sm">
+        <div className="mx-auto max-w-2xl rounded-2xl border bg-card p-8 shadow-soft">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -96,7 +101,7 @@ const ContactForm = () => {
                     <FormItem>
                       <FormLabel>Full Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Smith" {...field} />
+                        <Input placeholder="John Smith" className="rounded-lg" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -110,7 +115,7 @@ const ContactForm = () => {
                     <FormItem>
                       <FormLabel>Email Address</FormLabel>
                       <FormControl>
-                        <Input placeholder="john@company.com" type="email" {...field} />
+                        <Input placeholder="john@company.com" type="email" className="rounded-lg" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -126,7 +131,7 @@ const ContactForm = () => {
                     <FormItem>
                       <FormLabel>Company Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your Company" {...field} />
+                        <Input placeholder="Your Company" className="rounded-lg" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -144,7 +149,7 @@ const ContactForm = () => {
                         defaultValue={field.value}
                       >
                         <FormControl>
-                          <SelectTrigger>
+                          <SelectTrigger className="rounded-lg">
                             <SelectValue placeholder="Select license type" />
                           </SelectTrigger>
                         </FormControl>
@@ -171,7 +176,7 @@ const ContactForm = () => {
                     <FormControl>
                       <Textarea 
                         placeholder="Tell us about your software licenses (quantity, product names, etc.)" 
-                        className="min-h-32"
+                        className="min-h-32 rounded-lg resize-none"
                         {...field} 
                       />
                     </FormControl>
@@ -182,10 +187,15 @@ const ContactForm = () => {
               
               <Button 
                 type="submit" 
-                className="w-full" 
+                className="w-full rounded-lg py-6 text-base font-medium shadow-md hover:shadow-glow transition-all" 
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Submitting..." : "Get My Free Quote"}
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> 
+                    Processing...
+                  </>
+                ) : "Get My Free Quote"}
               </Button>
             </form>
           </Form>
