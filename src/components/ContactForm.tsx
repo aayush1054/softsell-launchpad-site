@@ -77,20 +77,21 @@ const ContactForm = () => {
   return (
     <section id="contact" className="section-padding bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-background relative">
       <div className="absolute inset-0 z-0">
-        <div className="absolute left-0 bottom-0 h-96 w-96 translate-y-1/2 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl"></div>
+        <div className="absolute left-0 bottom-0 h-96 w-96 translate-y-1/2 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl animate-pulse-soft"></div>
+        <div className="absolute top-1/3 right-1/4 h-64 w-64 rounded-full bg-blue-300/10 blur-3xl animate-float opacity-70"></div>
       </div>
       
       <div className="container-custom relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-blur-in">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Get Your <span className="text-gradient">Free Quote</span>
+            Get Your <span className="text-gradient animate-gradient">Free Quote</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Tell us about your software licenses and we'll get back to you with a valuation
           </p>
         </div>
         
-        <div className="mx-auto max-w-2xl rounded-2xl border bg-card p-8 shadow-soft">
+        <div className="mx-auto max-w-2xl rounded-2xl border bg-card p-8 shadow-soft animate-fade-in hover-lift">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -98,10 +99,10 @@ const ContactForm = () => {
                   control={form.control}
                   name="name"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="animate-slide-in" style={{ animationDelay: '0.1s' }}>
                       <FormLabel>Full Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Smith" className="rounded-lg" {...field} />
+                        <Input placeholder="John Smith" className="rounded-lg transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -112,10 +113,10 @@ const ContactForm = () => {
                   control={form.control}
                   name="email"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="animate-slide-in" style={{ animationDelay: '0.2s' }}>
                       <FormLabel>Email Address</FormLabel>
                       <FormControl>
-                        <Input placeholder="john@company.com" type="email" className="rounded-lg" {...field} />
+                        <Input placeholder="john@company.com" type="email" className="rounded-lg transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -128,10 +129,10 @@ const ContactForm = () => {
                   control={form.control}
                   name="company"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="animate-slide-in" style={{ animationDelay: '0.3s' }}>
                       <FormLabel>Company Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your Company" className="rounded-lg" {...field} />
+                        <Input placeholder="Your Company" className="rounded-lg transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -142,20 +143,20 @@ const ContactForm = () => {
                   control={form.control}
                   name="licenseType"
                   render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="animate-slide-in" style={{ animationDelay: '0.4s' }}>
                       <FormLabel>License Type</FormLabel>
                       <Select 
                         onValueChange={field.onChange} 
                         defaultValue={field.value}
                       >
                         <FormControl>
-                          <SelectTrigger className="rounded-lg">
+                          <SelectTrigger className="rounded-lg transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20">
                             <SelectValue placeholder="Select license type" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent>
+                        <SelectContent className="rounded-lg animate-fade-in">
                           {licenseTypes.map((type) => (
-                            <SelectItem key={type} value={type}>
+                            <SelectItem key={type} value={type} className="transition-colors hover:bg-blue-50 dark:hover:bg-blue-900/20">
                               {type}
                             </SelectItem>
                           ))}
@@ -171,12 +172,12 @@ const ContactForm = () => {
                 control={form.control}
                 name="message"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="animate-slide-in" style={{ animationDelay: '0.5s' }}>
                     <FormLabel>Message</FormLabel>
                     <FormControl>
                       <Textarea 
                         placeholder="Tell us about your software licenses (quantity, product names, etc.)" 
-                        className="min-h-32 rounded-lg resize-none"
+                        className="min-h-32 rounded-lg resize-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
                         {...field} 
                       />
                     </FormControl>
@@ -187,7 +188,8 @@ const ContactForm = () => {
               
               <Button 
                 type="submit" 
-                className="w-full rounded-lg py-6 text-base font-medium shadow-md hover:shadow-glow transition-all" 
+                className="w-full rounded-lg py-6 text-base font-medium shadow-md btn-glow animate-fade-in" 
+                style={{ animationDelay: '0.6s' }}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
