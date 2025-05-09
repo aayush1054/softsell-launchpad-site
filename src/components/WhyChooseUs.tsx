@@ -32,7 +32,10 @@ const WhyChooseUs = () => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add('animate-fade-in');
-            entry.target.style.opacity = '1';
+            // Properly cast to HTMLElement before setting style property
+            if (entry.target instanceof HTMLElement) {
+              entry.target.style.opacity = '1';
+            }
           }, idx * 150);
         }
       });

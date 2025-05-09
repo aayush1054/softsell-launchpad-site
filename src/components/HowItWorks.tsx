@@ -28,7 +28,10 @@ const HowItWorks = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-fade-in');
-          entry.target.style.opacity = '1';
+          // Properly cast to HTMLElement before setting style property
+          if (entry.target instanceof HTMLElement) {
+            entry.target.style.opacity = '1';
+          }
         }
       });
     }, { threshold: 0.1 });
