@@ -144,6 +144,54 @@ export default {
 						filter: 'blur(0)', 
 						opacity: '1' 
 					}
+				},
+				'bounce-soft': {
+					'0%, 100%': { 
+						transform: 'translateY(0)' 
+					},
+					'50%': { 
+						transform: 'translateY(-5px)' 
+					}
+				},
+				'rotate-bounce': {
+					'0%': { 
+						transform: 'rotate(0deg) translateY(0)' 
+					},
+					'25%': { 
+						transform: 'rotate(3deg) translateY(-3px)' 
+					},
+					'75%': { 
+						transform: 'rotate(-3deg) translateY(3px)' 
+					},
+					'100%': { 
+						transform: 'rotate(0deg) translateY(0)' 
+					}
+				},
+				'shimmer': {
+					'0%': { 
+						backgroundPosition: '-500px 0' 
+					},
+					'100%': { 
+						backgroundPosition: '500px 0' 
+					}
+				},
+				'scale-in-out': {
+					'0%, 100%': { 
+						transform: 'scale(1)' 
+					},
+					'50%': { 
+						transform: 'scale(1.05)' 
+					}
+				},
+				'slide-in-bottom': {
+					'0%': { 
+						transform: 'translateY(30px)', 
+						opacity: '0' 
+					},
+					'100%': { 
+						transform: 'translateY(0)', 
+						opacity: '1' 
+					}
 				}
 			},
 			animation: {
@@ -156,6 +204,11 @@ export default {
 				'spin-slow': 'spin-slow 8s linear infinite',
 				'glow': 'glow 2s ease-in-out infinite',
 				'blur-in': 'blur-in 0.7s ease-out',
+				'bounce-soft': 'bounce-soft 2s ease-in-out infinite',
+				'rotate-bounce': 'rotate-bounce 3s ease-in-out infinite',
+				'shimmer': 'shimmer 2s linear infinite',
+				'scale-in-out': 'scale-in-out 3s ease-in-out infinite',
+				'slide-in-bottom': 'slide-in-bottom 0.5s ease-out'
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
@@ -165,7 +218,9 @@ export default {
 				'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
 				'glow': '0 0 15px rgba(59, 130, 246, 0.5)',
 				'card': '0 10px 25px -5px rgba(0, 0, 0, 0.05)',
-				'highlight': '0 0 0 2px rgba(59, 130, 246, 0.3)'
+				'highlight': '0 0 0 2px rgba(59, 130, 246, 0.3)',
+				'inner-glow': 'inset 0 0 15px rgba(59, 130, 246, 0.2)',
+				'3d': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
 			}
 		}
 	},
